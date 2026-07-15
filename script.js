@@ -5,7 +5,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   hidePageLoader();
-  initTypingAnimation();
   initNavbarScrollState();
   initMobileMenu();
   initSmoothScroll();
@@ -32,51 +31,6 @@ function hidePageLoader() {
   setTimeout(() => loader.classList.add("hidden"), 1500);
 }
 
-/* ---------------------------------------------------------
-   2. HERO TYPING ANIMATION
-   Recreates a Typed.js-style effect using vanilla JS:
-   types out each phrase, pauses, deletes, moves to next.
---------------------------------------------------------- */
-function initTypingAnimation() {
-  const el = document.getElementById("typedText");
-  if (!el) return;
-
-  const phrases = ["Cybersecurity Enthusiast", "Ethical Hacker", "Problem Solver"];
-  const typeSpeed = 55;
-  const backSpeed = 30;
-  const backDelay = 1500;
-
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
-
-  function tick() {
-    const current = phrases[phraseIndex];
-
-    if (!deleting) {
-      charIndex++;
-      el.textContent = current.slice(0, charIndex);
-      if (charIndex === current.length) {
-        deleting = true;
-        setTimeout(tick, backDelay);
-        return;
-      }
-      setTimeout(tick, typeSpeed);
-    } else {
-      charIndex--;
-      el.textContent = current.slice(0, charIndex);
-      if (charIndex === 0) {
-        deleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        setTimeout(tick, 300);
-        return;
-      }
-      setTimeout(tick, backSpeed);
-    }
-  }
-
-  tick();
-}
 
 /* ---------------------------------------------------------
    3. NAVBAR — BLUR / BACKGROUND ON SCROLL
