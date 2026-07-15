@@ -41,10 +41,6 @@ function initTypingAnimation() {
   const el = document.getElementById("typedText");
   if (!el) return;
 
-  const phrases = ["Cybersecurity Enthusiast", "Ethical Hacker", "Problem Solver"];
-  const typeSpeed = 55;
-  const backSpeed = 30;
-  const backDelay = 1500;
 
   let phraseIndex = 0;
   let charIndex = 0;
